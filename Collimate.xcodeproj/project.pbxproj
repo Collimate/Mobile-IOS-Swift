@@ -3,27 +3,43 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8289C9BDC7BA0A5AD3E2EEC /* Pods_Collimate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13F02B3CF96029303356780 /* Pods_Collimate.framework */; };
 		DF7C9B4B25DF80220047EB68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B4A25DF80220047EB68 /* AppDelegate.swift */; };
 		DF7C9B4D25DF80220047EB68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B4C25DF80220047EB68 /* SceneDelegate.swift */; };
-		DF7C9B4F25DF80220047EB68 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B4E25DF80220047EB68 /* ViewController.swift */; };
 		DF7C9B5225DF80220047EB68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF7C9B5025DF80220047EB68 /* Main.storyboard */; };
 		DF7C9B5425DF80230047EB68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF7C9B5325DF80230047EB68 /* Assets.xcassets */; };
 		DF7C9B5725DF80230047EB68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF7C9B5525DF80230047EB68 /* LaunchScreen.storyboard */; };
+		DF7C9B6625DF82180047EB68 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B6525DF82180047EB68 /* DatabaseManager.swift */; };
+		DF7C9B8525DF82C40047EB68 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B8425DF82C40047EB68 /* ViewController.swift */; };
+		DF7C9B8825DF83C50047EB68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B8725DF83C50047EB68 /* User.swift */; };
+		DF7C9B8B25DF83D70047EB68 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B8A25DF83D70047EB68 /* Chat.swift */; };
+		DF7C9B9025DF86D30047EB68 /* DBFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B8F25DF86D30047EB68 /* DBFactory.swift */; };
+		DF7C9B9425DF86FF0047EB68 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B9325DF86FF0047EB68 /* DatabaseProtocol.swift */; };
+		DF7C9B9825DF933A0047EB68 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B9725DF933A0047EB68 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D1E3BDD3198986930420E6E /* Pods-Collimate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collimate.release.xcconfig"; path = "Target Support Files/Pods-Collimate/Pods-Collimate.release.xcconfig"; sourceTree = "<group>"; };
+		870E8A7CB10C00F983D7868D /* Pods-Collimate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collimate.debug.xcconfig"; path = "Target Support Files/Pods-Collimate/Pods-Collimate.debug.xcconfig"; sourceTree = "<group>"; };
 		DF7C9B4725DF80220047EB68 /* Collimate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collimate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF7C9B4A25DF80220047EB68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF7C9B4C25DF80220047EB68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DF7C9B4E25DF80220047EB68 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DF7C9B5125DF80220047EB68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DF7C9B5325DF80230047EB68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF7C9B5625DF80230047EB68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF7C9B5825DF80230047EB68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF7C9B6525DF82180047EB68 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		DF7C9B8425DF82C40047EB68 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DF7C9B8725DF83C50047EB68 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DF7C9B8A25DF83D70047EB68 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		DF7C9B8F25DF86D30047EB68 /* DBFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBFactory.swift; sourceTree = "<group>"; };
+		DF7C9B9325DF86FF0047EB68 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		DF7C9B9725DF933A0047EB68 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F13F02B3CF96029303356780 /* Pods_Collimate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collimate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +47,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8289C9BDC7BA0A5AD3E2EEC /* Pods_Collimate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		132939B5F82243D90466F0DD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				870E8A7CB10C00F983D7868D /* Pods-Collimate.debug.xcconfig */,
+				4D1E3BDD3198986930420E6E /* Pods-Collimate.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		53516531EFC59E278276CF2F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F13F02B3CF96029303356780 /* Pods_Collimate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DF7C9B3E25DF80220047EB68 = {
 			isa = PBXGroup;
 			children = (
 				DF7C9B4925DF80220047EB68 /* Collimate */,
 				DF7C9B4825DF80220047EB68 /* Products */,
+				132939B5F82243D90466F0DD /* Pods */,
+				53516531EFC59E278276CF2F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +92,53 @@
 		DF7C9B4925DF80220047EB68 /* Collimate */ = {
 			isa = PBXGroup;
 			children = (
+				DF7C9B6225DF81160047EB68 /* Model */,
+				DF7C9B6125DF81040047EB68 /* Database */,
+				DF7C9B6025DF80F10047EB68 /* ViewController */,
 				DF7C9B4A25DF80220047EB68 /* AppDelegate.swift */,
 				DF7C9B4C25DF80220047EB68 /* SceneDelegate.swift */,
-				DF7C9B4E25DF80220047EB68 /* ViewController.swift */,
 				DF7C9B5025DF80220047EB68 /* Main.storyboard */,
 				DF7C9B5325DF80230047EB68 /* Assets.xcassets */,
 				DF7C9B5525DF80230047EB68 /* LaunchScreen.storyboard */,
 				DF7C9B5825DF80230047EB68 /* Info.plist */,
 			);
 			path = Collimate;
+			sourceTree = "<group>";
+		};
+		DF7C9B6025DF80F10047EB68 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DF7C9B8425DF82C40047EB68 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DF7C9B6125DF81040047EB68 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				DF7C9B8E25DF868F0047EB68 /* Firebase */,
+				DF7C9B8F25DF86D30047EB68 /* DBFactory.swift */,
+				DF7C9B9325DF86FF0047EB68 /* DatabaseProtocol.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		DF7C9B6225DF81160047EB68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF7C9B8725DF83C50047EB68 /* User.swift */,
+				DF7C9B9725DF933A0047EB68 /* Message.swift */,
+				DF7C9B8A25DF83D70047EB68 /* Chat.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF7C9B8E25DF868F0047EB68 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				DF7C9B6525DF82180047EB68 /* DatabaseManager.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +148,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF7C9B5B25DF80230047EB68 /* Build configuration list for PBXNativeTarget "Collimate" */;
 			buildPhases = (
+				5853CBB46A2D773F630F6E4B /* [CP] Check Pods Manifest.lock */,
 				DF7C9B4325DF80220047EB68 /* Sources */,
 				DF7C9B4425DF80220047EB68 /* Frameworks */,
 				DF7C9B4525DF80220047EB68 /* Resources */,
+				C08DAC51D3759E715B495E32 /* [CP] Embed Pods Frameworks */,
+				466F88A6C210FAE622ECB872 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,13 +209,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		466F88A6C210FAE622ECB872 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Collimate/Pods-Collimate-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Collimate/Pods-Collimate-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Collimate/Pods-Collimate-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5853CBB46A2D773F630F6E4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Collimate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C08DAC51D3759E715B495E32 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Collimate/Pods-Collimate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Collimate/Pods-Collimate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Collimate/Pods-Collimate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DF7C9B4325DF80220047EB68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF7C9B4F25DF80220047EB68 /* ViewController.swift in Sources */,
+				DF7C9B9425DF86FF0047EB68 /* DatabaseProtocol.swift in Sources */,
+				DF7C9B6625DF82180047EB68 /* DatabaseManager.swift in Sources */,
+				DF7C9B8B25DF83D70047EB68 /* Chat.swift in Sources */,
+				DF7C9B9825DF933A0047EB68 /* Message.swift in Sources */,
 				DF7C9B4B25DF80220047EB68 /* AppDelegate.swift in Sources */,
+				DF7C9B9025DF86D30047EB68 /* DBFactory.swift in Sources */,
+				DF7C9B8525DF82C40047EB68 /* ViewController.swift in Sources */,
+				DF7C9B8825DF83C50047EB68 /* User.swift in Sources */,
 				DF7C9B4D25DF80220047EB68 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +425,7 @@
 		};
 		DF7C9B5C25DF80230047EB68 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 870E8A7CB10C00F983D7868D /* Pods-Collimate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -295,12 +438,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Collimate.Collimate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		DF7C9B5D25DF80230047EB68 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D1E3BDD3198986930420E6E /* Pods-Collimate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -313,7 +457,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Collimate.Collimate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
