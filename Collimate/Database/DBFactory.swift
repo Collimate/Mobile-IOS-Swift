@@ -12,9 +12,9 @@ struct DatabaseFactory {
     static func generateDatabase(_ type: String) -> DatabaseManagerProtocal {
         switch type {
         case "firestore":
-            return FirestoreManager.shared
+            return FirestoreManager()
         default:
-            return FirestoreManager.shared
+            return FirestoreManager()
         }
     }
     
