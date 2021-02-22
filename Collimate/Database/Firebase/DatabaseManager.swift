@@ -264,5 +264,40 @@ final class FirestoreManager: DatabaseManagerProtocal {
         }
     }
     
+    func messagesInChat(chatId: String, completion: @escaping( ([Message]?) -> Void )) {
+        db.collection("chat").document(chatId).addSnapshotListener {
+            querySnapshot, err in
+            if err != nil {
+                completion(nil)
+                return
+            }
+            guard let messageIds = (querySnapshot?.get("messages") as? [String]) else {
+                completion(nil)
+                return
+            }
+            if (messageIds.count == 0) {
+                completion([])
+                return
+            }
+            self.db.collection("message").whereField("__name__", in: messageIds).getDocuments {
+                querySnapshots, err in
+                if err != nil {
+                    completion(nil)
+                    return
+                }
+                completion(
+                    querySnapshots?.documents.map { (msgDocument) -> Message in
+                        return Message(
+                            text: (msgDocument.get("text") as? String) ?? "error",
+                            sentAt: (msgDocument.get("sentAt") as? Timestamp) ?? Timestamp.init(),
+                            senderId: (msgDocument.get("senderId") as? String) ?? "error",
+                            charId: (msgDocument.get("chatId") as? String) ?? "error"
+                        )
+                    }
+                )
+            }
+        }
+    }
+    
 }
 

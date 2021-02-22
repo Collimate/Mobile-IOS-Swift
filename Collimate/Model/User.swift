@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct User {
     
@@ -17,7 +18,7 @@ struct User {
     
     // used to create user instance if no record in the db
     public static func createUserInstance(_ email: String, _ name: String) -> User {
-        return User(email: email, name: name, chats: [], createdAt: Date.init())
+        return User(email: email, name: name, chats: [], createdAt: Timestamp.init())
     }
 
     

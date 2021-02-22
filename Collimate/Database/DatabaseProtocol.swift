@@ -38,4 +38,7 @@ protocol DatabaseManagerProtocal {
     // Message operations
     func getMessage(messageId: String, completion: @escaping( (Message?) -> Void ))
     
+    // real time observer
+    func messagesInChat(chatId: String, completion: @escaping( ([Message]?) -> Void ))
+    
 }
