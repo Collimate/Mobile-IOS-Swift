@@ -13,7 +13,7 @@ struct User {
     var email: String
     var name: String
     var chats: [String]
-    var createdAt: Date
+    var createdAt: Timestamp
     
     // used to create user instance if no record in the db
     public static func createUserInstance(_ email: String, _ name: String) -> User {

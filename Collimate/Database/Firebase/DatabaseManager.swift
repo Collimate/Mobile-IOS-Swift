@@ -15,16 +15,19 @@ final class FirestoreManager: DatabaseManagerProtocal {
 
     // User
     // get user instance
-    func getUser(identifier email: String, completion: @escaping( (User?) -> Void )) {
+    func getUser(_ email: String, completion: @escaping( (User?) -> Void )) {
         db.collection("user").whereField("email", isEqualTo: email).getDocuments() {
             (querySnapshot, err) in
-            
+            if querySnapshot?.documents.count == 0 {
+                completion(nil)
+                return
+            }
             if let userDocument = querySnapshot?.documents[0] {
                 let user: User = User(
                     email: (userDocument.get("email") as? String) ?? "error",
                     name: (userDocument.get("name") as? String) ?? "error",
                     chats: (userDocument.get("chats") as? [String]) ?? [],
-                    createdAt: (userDocument.get("createdAt") as? Date) ?? Date.init()
+                    createdAt: (userDocument.get("createdAt") as? Timestamp) ?? Timestamp.init()
                 )
                 completion(user)
             } else {
@@ -35,7 +38,8 @@ final class FirestoreManager: DatabaseManagerProtocal {
 
     // insert user information into firestore
     func createUser(with user: User) {
-        db.collection("user").document(user.email).setData([
+        let userId = user.email.replacingOccurrences(of: "@", with: "-").replacingOccurrences(of: ".", with: "-")
+        db.collection("user").document(userId).setData([
             "email": user.email,
             "name": user.name,
             "createdAt": user.createdAt,
@@ -45,7 +49,7 @@ final class FirestoreManager: DatabaseManagerProtocal {
 
     // check if there exist records where field "email" is equal to email,
     // if exist,return true
-    func doesUserExists(identifier email: String, completion: @escaping ((Bool?) -> Void)) {
+    func doesUserExists(_ email: String, completion: @escaping ((Bool?) -> Void)) {
         db.collection("user").whereField("email", isEqualTo: email).getDocuments() {
             (querySnapshot, err) in
             let res = !(querySnapshot?.isEmpty ?? true)
@@ -54,11 +58,19 @@ final class FirestoreManager: DatabaseManagerProtocal {
     }
     
     // getAllChats(userID) -> [chat]
-    func getUserChats(identifier email: String, completion: @escaping (([Chat]?) -> Void)) {
+    func getUserChats(_ email: String, completion: @escaping (([Chat]?) -> Void)) {
         // find all chat ids from users then find all chat objects
         db.collection("user").whereField("email", isEqualTo: email).getDocuments() {
             (querySnapshot, err) in
+            if err != nil || querySnapshot?.documents.count == 0 {
+                completion(nil)
+                return
+            }
             let chats = (querySnapshot?.documents[0].get("chats") as? [String]) ?? []
+            if chats.count == 0 {
+                completion([])
+                return
+            }
             self.db.collection("chat").whereField("__name__", in: chats).getDocuments {
                 querySnapshot, err in
                 if err != nil {
@@ -79,7 +91,8 @@ final class FirestoreManager: DatabaseManagerProtocal {
     }
     
     // let user join in
-    func joinChat(identifier email: String, chatId: String, completion: @escaping( (Bool) -> Void )) {
+    func joinChat(_ email: String, chatId: String, completion: @escaping( (Bool) -> Void )) {
+        let email = email.replacingOccurrences(of: "@", with: "-").replacingOccurrences(of: ".", with: "-")
         // add chat id in user
         // TODO: test if this func has return value
         db.collection("user").document(email).updateData([
@@ -95,7 +108,8 @@ final class FirestoreManager: DatabaseManagerProtocal {
     }
     
     // user leaves the chat
-    func leaveChat(identifier email: String, chatId: String, completion: @escaping( (Bool) -> Void )) {
+    func leaveChat(_ email: String, chatId: String, completion: @escaping( (Bool) -> Void )) {
+        let email = email.replacingOccurrences(of: "@", with: "-").replacingOccurrences(of: ".", with: "-")
         // remove chat id in user
         // TODO: test if this func has return value
         db.collection("user").document(email).updateData([
@@ -129,20 +143,21 @@ final class FirestoreManager: DatabaseManagerProtocal {
     }
     
     // send a message
-    func sendText(identifier email: String, chatId: String, text: String, completion: @escaping( (Bool) -> Void )) {
+    func sendText(_ email: String, chatId: String, text: String, completion: @escaping( (Bool) -> Void )) {
         // add message
+        let userId = email.replacingOccurrences(of: "@", with: "-").replacingOccurrences(of: ".", with: "-")
         let messageRef = db.collection("message").document()
         messageRef.setData([
             "text": text,
-            "sender": email,
+            "senderId": userId,
             "sentAt": Date.init(),
-            "chat": chatId
+            "chatId": chatId
         ])
         
         messageRef.getDocument() {
             (document, err) in
             
-            guard let messageId = document!.get("__name__") as? String else {
+            guard let messageId = document?.documentID else {
                 completion(false)
                 return
             }
@@ -155,13 +170,13 @@ final class FirestoreManager: DatabaseManagerProtocal {
 
     }
     
-    func getHistory(timestamp until: Date, chatId: String, completion: @escaping (([Message]?) -> Void)) {
-        <#code#>
-    }
-    
-    func getHistory(numOfMessages until: Int, chatId: String, completion: @escaping (([Message]?) -> Void)) {
-        <#code#>
-    }
+//    func getHistory(timestamp until: Date, chatId: String, completion: @escaping (([Message]?) -> Void)) {
+//        <#code#>
+//    }
+//
+//    func getHistory(numOfMessages until: Int, chatId: String, completion: @escaping (([Message]?) -> Void)) {
+//        <#code#>
+//    }
     
     func getUsersInChat(chatId: String, completion: @escaping (([User]?) -> Void)) {
         let chatRef = db.collection("chat").document(chatId)
@@ -185,7 +200,7 @@ final class FirestoreManager: DatabaseManagerProtocal {
                         email: (queryDocumentSnapshot.get("email") as? String) ?? "error",
                         name: (queryDocumentSnapshot.get("name") as? String) ?? "error",
                         chats: (queryDocumentSnapshot.get("chats") as? [String]) ?? [],
-                        createdAt: (queryDocumentSnapshot.get("createdAt") as? Date) ?? Date.init()
+                        createdAt: (queryDocumentSnapshot.get("createdAt") as? Timestamp) ?? Timestamp.init()
                     )
                 })
                 completion(users)
@@ -196,21 +211,25 @@ final class FirestoreManager: DatabaseManagerProtocal {
     func searchChat(search_token: String, completion: @escaping (([Chat]?) -> Void)) {
         if search_token.count < 3 {
             completion(nil)
+            return
         }
         
         let courseCate = search_token.prefix(3).uppercased()
         var courseNumber: Int = 0
+        var flag = false
         
         var i = 3
         while i < search_token.count {
-            let curr = search_token[search_token.index(search_token.startIndex, offsetBy: 3)]
+            let curr = search_token[search_token.index(search_token.startIndex, offsetBy: i)]
             if curr.isNumber {
+                flag = true
                 courseNumber = courseNumber * 10 + (Int(String(curr)) ?? 0)
             }
             i += 1
         }
         
-        let query = courseCate + " " + (courseNumber < 100 ? "0" + String(courseNumber) : String(courseNumber))
+        let query = courseCate + (!flag ? "" : " " + String(format: "%03d", courseNumber))
+        print(query)
         let queryRef = db.collection("chat").whereField("name", isGreaterThanOrEqualTo: query).whereField("name", isLessThanOrEqualTo: (query + "~"))
         queryRef.getDocuments {
             querySnapshot, err in
@@ -233,10 +252,11 @@ final class FirestoreManager: DatabaseManagerProtocal {
             
             if let msgDocument = document, ((document?.exists) != nil) {
                 let msg: Message = Message(
-                    text: (msgDocument.get("chat_id") as? String) ?? "error",
-                    sentAt: (msgDocument.get("sent_at") as? Date) ?? Date.init(),
-                    sendBy: (msgDocument.get("text") as? String) ?? "error",
-                    charId: (msgDocument.get("send_by") as? String ?? "error" ))
+                    text: (msgDocument.get("text") as? String) ?? "error",
+                    sentAt: (msgDocument.get("sentAt") as? Timestamp) ?? Timestamp.init(),
+                    senderId: (msgDocument.get("senderId") as? String) ?? "error",
+                    charId: (msgDocument.get("chatId") as? String) ?? "error"
+                )
                 completion(msg)
             } else {
                 completion(nil)

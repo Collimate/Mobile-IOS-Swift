@@ -11,8 +11,8 @@ import Foundation
 struct Message {
     
     var text: String
-    var sentAt: Date
-    var sendBy: String
+    var sentAt: Timestamp
+    var senderId: String
     var charId: String
     
 }

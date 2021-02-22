@@ -58,8 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // if new user, insert user into firestore
         let firestore = DatabaseFactory.generateDatabase("firestore")
         
-        firestore.doesUserExists(identifier: email) { doesExist in
-            if !doesExist {
+        firestore.doesUserExists(email) { doesExist in
+            if !doesExist! {
                 firestore.createUser(with: User.createUserInstance(email, name))
             }
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B158FBAB25E25274003D2EE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B158FBAA25E25274003D2EE4 /* GoogleService-Info.plist */; };
 		B8289C9BDC7BA0A5AD3E2EEC /* Pods_Collimate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13F02B3CF96029303356780 /* Pods_Collimate.framework */; };
 		DF7C9B4B25DF80220047EB68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B4A25DF80220047EB68 /* AppDelegate.swift */; };
 		DF7C9B4D25DF80220047EB68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C9B4C25DF80220047EB68 /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		4D1E3BDD3198986930420E6E /* Pods-Collimate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collimate.release.xcconfig"; path = "Target Support Files/Pods-Collimate/Pods-Collimate.release.xcconfig"; sourceTree = "<group>"; };
 		870E8A7CB10C00F983D7868D /* Pods-Collimate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collimate.debug.xcconfig"; path = "Target Support Files/Pods-Collimate/Pods-Collimate.debug.xcconfig"; sourceTree = "<group>"; };
+		B158FBAA25E25274003D2EE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DF7C9B4725DF80220047EB68 /* Collimate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Collimate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF7C9B4A25DF80220047EB68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF7C9B4C25DF80220047EB68 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				DF7C9B6025DF80F10047EB68 /* ViewController */,
 				DF7C9B4A25DF80220047EB68 /* AppDelegate.swift */,
 				DF7C9B4C25DF80220047EB68 /* SceneDelegate.swift */,
+				B158FBAA25E25274003D2EE4 /* GoogleService-Info.plist */,
 				DF7C9B5025DF80220047EB68 /* Main.storyboard */,
 				DF7C9B5325DF80230047EB68 /* Assets.xcassets */,
 				DF7C9B5525DF80230047EB68 /* LaunchScreen.storyboard */,
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF7C9B5725DF80230047EB68 /* LaunchScreen.storyboard in Resources */,
+				B158FBAB25E25274003D2EE4 /* GoogleService-Info.plist in Resources */,
 				DF7C9B5425DF80230047EB68 /* Assets.xcassets in Resources */,
 				DF7C9B5225DF80220047EB68 /* Main.storyboard in Resources */,
 			);
