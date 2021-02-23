@@ -10,7 +10,7 @@ import GoogleSignIn
 import FirebaseFirestore
 
 final class FirestoreManager: DatabaseManagerProtocal {
-
+    
     private let db = Firestore.firestore()
 
     // User
@@ -265,37 +265,44 @@ final class FirestoreManager: DatabaseManagerProtocal {
     }
     
     func messagesInChat(chatId: String, completion: @escaping( ([Message]?) -> Void )) {
-        db.collection("chat").document(chatId).addSnapshotListener {
+        db.collection("chat").whereField("__name__", isEqualTo: chatId).addSnapshotListener {
             querySnapshot, err in
             if err != nil {
                 completion(nil)
                 return
             }
-            guard let messageIds = (querySnapshot?.get("messages") as? [String]) else {
-                completion(nil)
-                return
+            let changes = (querySnapshot?.documentChanges) ?? []
+            for change in changes {
+                print(change.document.data())
             }
-            if (messageIds.count == 0) {
-                completion([])
-                return
-            }
-            self.db.collection("message").whereField("__name__", in: messageIds).getDocuments {
-                querySnapshots, err in
-                if err != nil {
-                    completion(nil)
-                    return
-                }
-                completion(
-                    querySnapshots?.documents.map { (msgDocument) -> Message in
-                        return Message(
-                            text: (msgDocument.get("text") as? String) ?? "error",
-                            sentAt: (msgDocument.get("sentAt") as? Timestamp) ?? Timestamp.init(),
-                            senderId: (msgDocument.get("senderId") as? String) ?? "error",
-                            charId: (msgDocument.get("chatId") as? String) ?? "error"
-                        )
-                    }
-                )
-            }
+//            guard var messageIds = (querySnapshot?.get("messages") as? [String]) else {
+//                completion(nil)
+//                return
+//            }
+//            if (messageIds.count == 0) {
+//                completion([])
+//                return
+//            }
+//            if (messageIds.count > 10) {
+//                messageIds = messageIds.suffix(10)
+//            }
+//            self.db.collection("message").whereField("__name__", in: messageIds).getDocuments {
+//                querySnapshots, err in
+//                if err != nil {
+//                    completion(nil)
+//                    return
+//                }
+//                completion(
+//                    querySnapshots?.documents.map { (msgDocument) -> Message in
+//                        return Message(
+//                            text: (msgDocument.get("text") as? String) ?? "error",
+//                            sentAt: (msgDocument.get("sentAt") as? Timestamp) ?? Timestamp.init(),
+//                            senderId: (msgDocument.get("senderId") as? String) ?? "error",
+//                            charId: (msgDocument.get("chatId") as? String) ?? "error"
+//                        )
+//                    }
+//                )
+//            }
         }
     }
     
